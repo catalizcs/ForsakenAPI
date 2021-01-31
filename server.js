@@ -1,5 +1,5 @@
 const express = require('express');
-const port = 4000;
+const port = process.env.PORT;
 const fs = require('fs')
 const path = require('path');
 const cdata = require('./modules/getcdata');
