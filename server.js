@@ -6,17 +6,9 @@ const cdata = require('./modules/getcdata');
 const election = require('./modules/election');
 const fastify = require('fastify')({
   logger: false,
-  http2: true,
-  https: {
-    allowHTTP1: true,
-    key: fs.readFileSync(path.join(__dirname, 'resources', 'privkey.pem')),
-    cert: fs.readFileSync(path.join(__dirname, 'resources', 'cert.pem'))
-  },
+  http2: true
 });
 fastify.register(require('fastify-favicon'), { path: './resources' })
-fastify.register(require('fastify-static'), {
-  root: path.join(__dirname, 'pages')
-})
 
 fastify.get("/moh/data", async (req, res) => {
      let now = new Date();
